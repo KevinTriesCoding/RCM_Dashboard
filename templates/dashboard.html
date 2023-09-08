@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Healthcare Billing Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .card {
+            border-radius: 12px;
+        }
+        .card-header {
+            background-color: #007bff;
+            color: white;
+            font-size: 1.2em;
+        }
+        .plot-img {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                Healthcare Billing Dashboard
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Metrics and Visualizations</h5>
+                
+                <!-- Plot -->
+                <h6>Plot</h6>
+                <img src="{{ url_for('static', filename='plot.png') }}" alt="Plot" class="plot-img">
+                
+                <!-- Target Progress Bar -->
+                <h6>Target Progress Bar</h6>
+                <img src="{{ url_for('static', filename='new_progress_bar.png') }}" alt="Target Progress Bar" class="plot-img">
+                
+                <!-- Poster Pie Chart -->
+                <h6>Poster Pie Chart</h6>
+                <img src="{{ url_for('static', filename='poster_pie_chart.png') }}" alt="Poster Pie Chart" class="plot-img">
+                
+                <!-- Loop to display service lines by each contact ID -->
+                <h6>Service Lines by Contact ID</h6>
+                <ul>
+                {% for contact_id, count in contact_id_counts.items() %}
+                    <li>{{ contact_id }}: {{ count }} service lines</li>
+                {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap & jQuery JS (Optional) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
